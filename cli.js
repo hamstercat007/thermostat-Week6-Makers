@@ -1,15 +1,25 @@
 const Thermostat = require("./thermostat")
+const readlineSync = require("readline-sync")
 
-const readline = require('readline')
+const thermostat = new Thermostat();
 
-let rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+let playing = true;
 
-rl.question("What is your name?", function(answer) {
-  // TODO: Log the answer in a database. //this is an inline anonymous function. 
-  console.log(`Your name is ${answer}`);
+while(playing) {
 
-  rl.close();
-});
+  console.log(`Temperature is ${thermostat.temperature}`)
+  readlineSync.setDefaultOptions({prompt: 'Enter command '});
+  command = readlineSync.prompt()
+
+  switch(command) {
+    case "up":
+      thermostat.up()
+      break;
+    case "down":
+      thermostat.down()
+      break;
+    case "quit":
+      playing = false;
+  }
+
+}
