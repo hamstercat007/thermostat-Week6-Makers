@@ -43,4 +43,30 @@ describe('Thermostat', () => {
       } 
       expect(thermostat.getTemperature()).toEqual(32)
   })
+
+  it('.reset will set the temperature back to 20', () => {
+    thermostat.up()
+    thermostat.up()
+    thermostat.reset() 
+    expect(thermostat.getTemperature()).toEqual(20)
+  })
+
+  it('can tell you the energy usage for medium-usage', () => {
+    expect(thermostat.energyUsage()).toEqual("medium-usage")
+  })
+
+  it('can tell you the energy usage for low-usage', () => {
+    for (let i = 0 ; i < 10 ; i++) {
+      thermostat.down();
+      } 
+    expect(thermostat.energyUsage()).toEqual("low-usage")
+  })
+
+  it('can tell you the energy usage for high-usage', () => {
+    thermostat.setPowerSavingMode(false)
+    for (let i = 0 ; i < 30 ; i++) {
+      thermostat.up();
+      } 
+    expect(thermostat.energyUsage()).toEqual("high-usage")
+  })
 })
