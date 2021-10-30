@@ -13,4 +13,3 @@ rl.question("What is your name?", function(answer) {
 
   rl.close();
 });
-
