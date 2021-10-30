@@ -22,6 +22,13 @@ describe('Thermostat', () => {
     expect(thermostat.getTemperature()).toEqual(21)
   })
 
+  it('has a minimum temperature of 10C', () => {
+    for (let i = 0 ; i < 20 ; i++) {
+      thermostat.down();
+      } 
+      expect(thermostat.getTemperature()).toEqual(10)
+  })
+
   it('.setPowerSavingMode when turned on will be a max of 25C', () => {
     for (let i = 0 ; i < 10 ; i++) {
     thermostat.up();
@@ -34,6 +41,6 @@ describe('Thermostat', () => {
     for (let i = 0 ; i < 20 ; i++) {
       thermostat.up();
       } 
-      expect(thermostat.getTemperature()).toEqual(40)
+      expect(thermostat.getTemperature()).toEqual(32)
   })
 })

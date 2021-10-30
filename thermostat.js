@@ -8,15 +8,16 @@ class Thermostat {
   }
 
   up() {
-    if (this.powerSavingMode && this.temperature >= 25) {
+    if ((this.powerSavingMode && this.temperature >= 25) || (this.powerSavingMode == false && this.temperature >= 32)) {
       return 
-    }
-    // power saving mode = true, max temp is 25
-    //power saving mode = off, up to 32 degrees   
+    }  
     this.temperature += 1
   }
 
   down() {
+    if (this.temperature <= 10) {
+      return
+    }
     this.temperature -= 1
   }
 
